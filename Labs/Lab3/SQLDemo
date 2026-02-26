@@ -1,0 +1,61 @@
+-- Example: Books published after 2000
+SELECT title, publication_year
+FROM books
+WHERE publication_year > 2000;
+
+-- Example: Students only
+SELECT name, email
+FROM members
+WHERE membership_type = 'faculty';
+
+
+-- Example: Count books per genre
+SELECT genre, COUNT(*) AS total_books
+FROM books
+GROUP BY genre;
+
+-- Example: get count of memberships 
+select membership_type, count(*) as memship_counts
+FROM members
+GROUP BY membership_type
+
+-- Example: Average fine
+SELECT AVG(fine_amount) AS average_fine
+FROM borrowings;
+
+
+-- Example: Books with author names
+SELECT b.title, a.name AS author_name
+FROM books b
+JOIN authors a ON b.author_id = a.author_id;
+
+-- Example: Borrowings with member and book info
+SELECT br.borrow_id, m.name AS member_name, b.title AS book_title, br.borrow_date
+FROM borrowings br
+JOIN members m ON br.member_id = m.member_id
+JOIN books b ON br.book_id = b.book_id;
+
+-- Example: Books not borrowed yet
+SELECT title
+FROM books
+WHERE book_id NOT IN (SELECT book_id FROM borrowings);
+
+-- Example: Top 3 members with highest fines
+SELECT m.member_id, m.name, SUM(b.fine_amount) AS total_fines
+FROM borrowings b
+JOIN members m ON m.member_id = b.member_id
+GROUP BY m.member_id, m.name
+ORDER BY total_fines DESC
+LIMIT 3;
+
+-- Find authors with most books, then list their books
+SELECT title, author_id
+FROM books
+WHERE author_id = (
+    SELECT author_id
+    FROM books
+    GROUP BY author_id
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+);
+
