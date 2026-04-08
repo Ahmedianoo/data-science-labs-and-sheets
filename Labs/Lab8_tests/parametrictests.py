@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from scipy import stats # for the cdf and the sf functions (t-distribution and chi2 distribution)
+from scipy.stats import t, chi2
 
 
 class ParametricTests:
@@ -16,12 +17,12 @@ class ParametricTests:
     def sample_mean(self, data: pd.Series) -> float:
         """Return the sample mean."""
         # TODO.1: implement using pandas
-        pass
+        return data.mean()
 
     def sample_std(self, data: pd.Series) -> float:
         """Return the sample standard deviation (ddof=1)."""
         # TODO.2: implement using pandas(remember the ddof=1 for sample std)
-        pass
+        return data.std(ddof=1)
 
     # =========================================================
     # ---------------- One-Sample t-Test ----------------------
@@ -38,7 +39,14 @@ class ParametricTests:
         # 1) compute mean
         # 3) compute standard error
         # 4) return t and dof (degree of freedom)
-        pass
+        x_bar = self.sample_mean(data)
+        s = self.sample_std(data)
+        n = len(data)
+        dof = n - 1
+        t = (x_bar - mu0) / (s / np.sqrt(n))
+        
+
+        return t, dof
 
     # =========================================================
     # ------------- Two Independent Samples t-Test ------------
@@ -55,7 +63,22 @@ class ParametricTests:
         # 2) compute std1 and std2
         # 3) compute SE = sqrt( (s1^2/n1) + (s2^2/n2) )
         # 4) return t and dof (degree of freedom)
-        pass
+        x1_bar = self.sample_mean(data1)
+        x2_bar = self.sample_mean(data2)
+
+        s1 = self.sample_std(data1)
+        s2 = self.sample_std(data2)
+
+        n1 = len(data1)
+        n2 = len(data2)
+
+        SE = np.sqrt((s1**2 / n1) + (s2**2 / n2))
+
+        t = (x1_bar - x2_bar) / SE
+
+        dof = n1 + n2 - 1 - 1
+
+        return t, dof
 
     # =========================================================
     # -------------------- Paired t-Test ----------------------
@@ -69,7 +92,11 @@ class ParametricTests:
         # 1) compute difference = after - before
         # 2) run one-sample t-test on the difference with mu0 = 0
         # 3) return t and dof (degree of freedom) of the one-sample t-test
-        pass
+
+        diff = after - before
+        t, dof = self.one_sample_t_stat(diff, 0)
+
+        return t, dof
    
     # =========================================================
     # --------------------- Decision Rule ---------------------
@@ -84,11 +111,17 @@ class ParametricTests:
         # check the hypothesis based on the tailing and alpha setting
         # return True if p-value < alpha (e.g., 0.05) for each case separately (two_tailed, one-tailed)
 
+        p_val = 0
+        p_val = 2 * (1 - t.cdf(abs(t_stat), dof))
+
         if tailing == "one_tailed":
-            pass  # One-tailed test
+            # One-tailed test
+            p_val = 1 - t.cdf(t_stat)
         else:
-            pass # Two-tailed test
-        #return p_val, p_val < alpha
+            # Two-tailed test
+            p_val = 2 * (1 - t.cdf(abs(t_stat), dof))
+
+        return p_val, p_val < alpha
 
 
         
@@ -110,8 +143,12 @@ class ParametricTests:
         # 3. P-value: use the 'survival function' (sf) for the distribution lookup.
         # 4. calculate the decision rule based on the p-value and alpha
         #return chi_stat, dof, p_value
+        chi2_statistic = sum((observed - expected)**2 / expected)
+        k = len(observed)
+        dof = k - 1
+        p_value = chi2.sf(chi2_statistic, dof)
 
-        pass
+        return chi2_statistic, dof, p_value
 
     def chi2_independence(self, feature1: pd.Series, feature2: pd.Series):
         """
@@ -145,10 +182,12 @@ class ParametricTests:
                                 columns=observed.columns)
         #TODO.8:
         # 4) Chi-square statistic
-
+        chi2_statistic = ((observed - expected)**2 / expected).values.sum()
         # 5) Degrees of freedom
+        dof = (observed.shape[0] - 1) * (observed.shape[1] - 1)
 
         # 6) p-value
+        p_value = chi2.sf(chi2_statistic, dof)
 
-        #return chi2_stat, p_value, dof, expected
-        pass
+        return chi2_statistic, p_value, dof, expected
+        
