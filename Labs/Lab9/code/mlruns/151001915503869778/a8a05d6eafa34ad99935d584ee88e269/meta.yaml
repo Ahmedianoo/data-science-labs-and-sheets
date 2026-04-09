@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/ahmed/OneDrive/Desktop/Semester%20work/Data%20Science/Labs%20and%20Problem%20sets/Labs/Lab9/code/mlruns/151001915503869778/a8a05d6eafa34ad99935d584ee88e269/artifacts
+end_time: 1775719625830
+entry_point_name: ''
+experiment_id: '151001915503869778'
+lifecycle_stage: active
+run_id: a8a05d6eafa34ad99935d584ee88e269
+run_name: rf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775719625774
+status: 3
+tags: []
+user_id: ahmed

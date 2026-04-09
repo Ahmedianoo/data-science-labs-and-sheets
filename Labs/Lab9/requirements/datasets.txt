@@ -1,0 +1,4 @@
+https://www.kaggle.com/datasets/jayjoshi37/customer-subscription-churn-and-usage-patterns
+
+round to the nearest decimal
+https://www.kaggle.com/datasets/aliiihussain/sports-footwear-sales-and-consumer-behavior

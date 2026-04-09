@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/ahmed/OneDrive/Desktop/Semester%20work/Data%20Science/Labs%20and%20Problem%20sets/Labs/Lab9/code/mlruns/151001915503869778/92b0369d13254dccbf97a1a1e2715ff7/artifacts
+end_time: 1775717685194
+entry_point_name: ''
+experiment_id: '151001915503869778'
+lifecycle_stage: active
+run_id: 92b0369d13254dccbf97a1a1e2715ff7
+run_name: knn-sweep
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775717683370
+status: 3
+tags: []
+user_id: ahmed

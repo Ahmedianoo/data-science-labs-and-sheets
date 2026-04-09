@@ -1,0 +1,10 @@
+digest: 9e6b27e6
+name: dataset
+profile: '{"num_rows": 90, "num_elements": 360}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "sepal length (cm)", "required":
+  true}, {"type": "double", "name": "sepal width (cm)", "required": true}, {"type":
+  "double", "name": "petal length (cm)", "required": true}, {"type": "double", "name":
+  "petal width (cm)", "required": true}]}'
+source: '{"tags": {"mlflow.user": "ahmed", "mlflow.source.name": "mlflow.ipynb", "mlflow.source.type":
+  "NOTEBOOK"}}'
+source_type: code

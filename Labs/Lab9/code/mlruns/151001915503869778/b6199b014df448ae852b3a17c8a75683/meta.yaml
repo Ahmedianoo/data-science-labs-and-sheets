@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/ahmed/OneDrive/Desktop/Semester%20work/Data%20Science/Labs%20and%20Problem%20sets/Labs/Lab9/code/mlruns/151001915503869778/b6199b014df448ae852b3a17c8a75683/artifacts
+end_time: 1775717683635
+entry_point_name: ''
+experiment_id: '151001915503869778'
+lifecycle_stage: active
+run_id: b6199b014df448ae852b3a17c8a75683
+run_name: knn-k1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775717683438
+status: 3
+tags: []
+user_id: ahmed

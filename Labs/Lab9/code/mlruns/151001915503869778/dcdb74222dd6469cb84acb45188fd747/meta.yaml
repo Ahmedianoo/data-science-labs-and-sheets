@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/ahmed/OneDrive/Desktop/Semester%20work/Data%20Science/Labs%20and%20Problem%20sets/Labs/Lab9/code/mlruns/151001915503869778/dcdb74222dd6469cb84acb45188fd747/artifacts
+end_time: 1775719268733
+entry_point_name: ''
+experiment_id: '151001915503869778'
+lifecycle_stage: active
+run_id: dcdb74222dd6469cb84acb45188fd747
+run_name: random-forest-best
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775719268187
+status: 3
+tags: []
+user_id: ahmed

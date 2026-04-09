@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/ahmed/OneDrive/Desktop/Semester%20work/Data%20Science/Labs%20and%20Problem%20sets/Labs/Lab9/code/mlruns/151001915503869778/6dc81b9347d748f88b2443b2cb7257a0/artifacts
+end_time: 1775719625833
+entry_point_name: ''
+experiment_id: '151001915503869778'
+lifecycle_stage: active
+run_id: 6dc81b9347d748f88b2443b2cb7257a0
+run_name: model-comparison
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775719625498
+status: 3
+tags: []
+user_id: ahmed
